@@ -1,0 +1,9 @@
+.furkot-map-drag-handle {
+  pointer-events: none;
+  position: absolute;
+  display: none;
+}
+
+.furkot-map-drag-handle-visible.furkot-map-drag-handle {
+  display: block;
+}

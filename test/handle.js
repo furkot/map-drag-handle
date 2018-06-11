@@ -28,4 +28,29 @@ describe('handle', function () {
     document.querySelectorAll('.furkot-map-drag-handle').should.have.property('length', 0);
     should.exist(document.getElementById('test'));
   });
+
+  it('attach element', function () {
+    document.body.innerHTML = '<div id="test">';
+    var el = document.getElementById('test'), h = handle({
+      el: el,
+      visibleClass: 'element-visible'
+    });
+    var handlers = {};
+    h.attach({
+      on: function (event, handler) {
+        handlers[event] = handler;
+      }
+    });
+    handlers.mouseenter({
+      point: {
+        x: 0,
+        y: 0
+      }
+    });
+    el.className.should.equal('element-visible');
+
+    handlers.mouseleave({});
+    el.className.should.equal('');
+  });
+
 });

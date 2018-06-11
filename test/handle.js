@@ -1,3 +1,5 @@
+var should = require('should');
+
 var handle = require('../');
 
 describe('handle', function () {
@@ -10,8 +12,20 @@ describe('handle', function () {
   });
 
   it('create element', function () {
-    handle();
+    var h = handle();
     document.querySelectorAll('.furkot-map-drag-handle').should.have.property('length', 1);
+    h.destroy();
+    document.querySelectorAll('.furkot-map-drag-handle').should.have.property('length', 0);
   });
 
+  it('use element', function () {
+    document.body.innerHTML = '<div id="test">';
+    var h = handle({
+      el: document.getElementById('test')
+    });
+    document.querySelectorAll('.furkot-map-drag-handle').should.have.property('length', 0);
+    h.destroy();
+    document.querySelectorAll('.furkot-map-drag-handle').should.have.property('length', 0);
+    should.exist(document.getElementById('test'));
+  });
 });

@@ -1,0 +1,32 @@
+{
+  "name": "map-drag-handle",
+  "version": "0.0.0",
+  "description": "Drag handle for objects on map.",
+  "author": {
+    "name": "Natalia Kowalczyk",
+    "email": "melitele@furkot.com",
+    "url": "https://melitele.me"
+  },
+  "repository": "furkot/map-drag-handle",
+  "license": "MIT",
+  "keywords": [
+    "map-drag-handle",
+    "map",
+    "drag"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "jsdom": "~11",
+    "jsdom-global": "~3",
+    "jshint": "~2",
+    "mocha": "~5",
+    "should": "~13"
+  },
+  "scripts": {
+    "test": "make check"
+  },
+  "files": [
+    "index.js",
+    "lib"
+  ]
+}

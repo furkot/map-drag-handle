@@ -64,10 +64,7 @@ function bounds(points) {
       });
       handle.attach(poly, {
         visibleClass: 'drag-handle-on-polyline',
-        draggingClass: 'dragging-polyline',
-        zindex: function () {
-          return poly.zindex() + (poly.zindexLevel || 0);
-        }
+        draggingClass: 'dragging-polyline'
       });
       [{
         url: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNiIgaGVpZ2h0PSIzMCI+PHBhdGggZD0iTTAgMEgyNlYyNkgxNkwxMyAzMEwxMCAyNkgwWiIgZmlsbD0iI2Y4MDAxMiIvPjxwYXRoIGQ9Ik0yIDJIMjRWMjRIMloiIGZpbGw9IiNmZmYiLz48cGF0aCBkPSJNMjEuOCAxMC40TDcuNSA2LjZWNC40SDYuNFYxOS44SDQuMlYyMkg5LjdWMTkuOEg3LjVWMTQuM1oiIGZpbGw9IiNmODAwMTIiLz48L3N2Zz4=',
@@ -107,9 +104,6 @@ function bounds(points) {
           draggingClass: 'dragging-marker',
           markerClass: 'dragging-circle',
           icon: mk.icon() && mk.icon,
-          zindex: function () {
-            return mk.zindex() + (mk.zindexLevel || 0);
-          },
           dragend: dragend
         });
       });

@@ -16,14 +16,12 @@ function bounds(points) {
   }, [points[0].slice(), points[0].slice()]);
 }
 
-var maps = require('maps-facade').init({
-  service: 'mapbox'
-}, function () {
-
+(function () {
+  var maps = require('maps-facade').init();
   var dataEl = document.querySelector('#data');
   var points = JSON.parse(dataEl.getAttribute('data-markers'));
   var bnds = bounds(points);
-  var path = dataEl.getAttribute('data-polyline');
+  var path = require('@pirxpilot/google-polyline').decode(dataEl.getAttribute('data-polyline'));
 
   function createHandle() {
     var h = document.createElement('div');
@@ -118,4 +116,4 @@ var maps = require('maps-facade').init({
     }
   });
   map.fitBounds(bnds);
-});
+}());

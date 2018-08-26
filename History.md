@@ -1,4 +1,10 @@
 
+0.0.4 / 2018-08-25
+==================
+
+ * remove dependency on zIndex
+ * update dependencies in demo
+
 0.0.3 / 2018-08-18
 ==================
 

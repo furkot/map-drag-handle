@@ -1,4 +1,10 @@
 
+0.0.5 / 2018-08-26
+==================
+
+ * upgrade syntax to ES6
+ * fix `event` is undefined in dragcancel handler
+
 0.0.4 / 2018-08-25
 ==================
 

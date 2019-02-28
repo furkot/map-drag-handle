@@ -1,4 +1,10 @@
 
+1.0.0 / 2019-02-28
+==================
+
+ * reset method that sends mouseleave for all associated objects
+ * send mouseleave event when disassociating drag handle from object
+
 0.0.6 / 2018-08-30
 ==================
 

@@ -1,7 +1,6 @@
 [![NPM version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
+[![Build Status][build-image]][build-url]
 [![Dependency Status][deps-image]][deps-url]
-[![Dev Dependency Status][deps-dev-image]][deps-dev-url]
 
 # map-drag-handle
 
@@ -25,14 +24,12 @@ mapDragHandle('Rainbow');
 
 MIT © [Natalia Kowalczyk](https://melitele.me)
 
-[npm-image]: https://img.shields.io/npm/v/map-drag-handle.svg
+[npm-image]: https://img.shields.io/npm/v/map-drag-handle
 [npm-url]: https://npmjs.org/package/map-drag-handle
 
-[travis-url]: https://travis-ci.org/furkot/map-drag-handle
-[travis-image]: https://img.shields.io/travis/furkot/map-drag-handle.svg
+[build-url]: https://github.com/furkot/map-drag-handle/actions/workflows/check.yaml
+[build-image]: https://img.shields.io/github/actions/workflow/status/furkot/map-drag-handle/check.yaml?branch=main
 
-[deps-image]: https://img.shields.io/david/furkot/map-drag-handle.svg
-[deps-url]: https://david-dm.org/furkot/map-drag-handle
+[deps-image]: https://img.shields.io/librariesio/release/npm/map-drag-handle
+[deps-url]: https://libraries.io/npm/map-drag-handle
 
-[deps-dev-image]: https://img.shields.io/david/dev/furkot/map-drag-handle.svg
-[deps-dev-url]: https://david-dm.org/furkot/map-drag-handle?type=dev

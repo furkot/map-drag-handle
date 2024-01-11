@@ -1,3 +1,4 @@
+var { describe, it, after, before } = require('node:test');
 var should = require('should');
 
 var handle = require('../');

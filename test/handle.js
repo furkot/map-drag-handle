@@ -1,44 +1,47 @@
-var { describe, it, after, before } = require('node:test');
-var should = require('should');
+const test = require('node:test');
+const jsdom = require('jsdom-global');
 
-var handle = require('../');
+const handle = require('../');
 
-describe('handle', function () {
-  before(function () {
-    this.jsdom = require('jsdom-global')();
+test('handle', async t => {
+  let cleanJsdom;
+
+  t.before(() => {
+    cleanJsdom = jsdom();
   });
 
-  after(function () {
-    this.jsdom();
+  t.after(() => {
+    cleanJsdom();
   });
 
-  it('create element', function () {
-    var h = handle();
-    document.querySelectorAll('.furkot-map-drag-handle').should.have.property('length', 1);
+  await t.test('create element', t => {
+    const h = handle();
+    t.assert.equal(document.querySelectorAll('.furkot-map-drag-handle').length, 1);
     h.destroy();
-    document.querySelectorAll('.furkot-map-drag-handle').should.have.property('length', 0);
+    t.assert.equal(document.querySelectorAll('.furkot-map-drag-handle').length, 0);
   });
 
-  it('use element', function () {
+  await t.test('use element', t => {
     document.body.innerHTML = '<div id="test">';
-    var h = handle({
+    const h = handle({
       el: document.getElementById('test')
     });
-    document.querySelectorAll('.furkot-map-drag-handle').should.have.property('length', 0);
+    t.assert.equal(document.querySelectorAll('.furkot-map-drag-handle').length, 0);
     h.destroy();
-    document.querySelectorAll('.furkot-map-drag-handle').should.have.property('length', 0);
-    should.exist(document.getElementById('test'));
+    t.assert.equal(document.querySelectorAll('.furkot-map-drag-handle').length, 0);
+    t.assert.ok(document.getElementById('test'));
   });
 
-  it('attach element', function () {
+  await t.test('attach element', t => {
     document.body.innerHTML = '<div id="test">';
-    var el = document.getElementById('test'), h = handle({
+    const el = document.getElementById('test');
+    const h = handle({
       el: el,
       visibleClass: 'element-visible'
     });
-    var handlers = {};
+    const handlers = {};
     h.attach({
-      on: function (event, handler) {
+      on(event, handler) {
         handlers[event] = handler;
       }
     });
@@ -48,10 +51,9 @@ describe('handle', function () {
         y: 0
       }
     });
-    el.className.should.equal('element-visible');
+    t.assert.equal(el.className, 'element-visible');
 
     handlers.mouseleave({});
-    el.className.should.equal('');
+    t.assert.equal(el.className, '');
   });
-
 });

@@ -1,6 +1,5 @@
 PROJECT=demo
 NODE_BIN=./node_modules/.bin
-SRC = index.js $(wildcard lib/*.js)
 CSS = \
 	${PROJECT}.css \
 	../handle.css
@@ -16,10 +15,15 @@ build/build.css: $(CSS) | build
 	cat $^ > $@
 
 build/build.js: node_modules $(SRC) | build
-	$(NODE_BIN)/browserify \
-		--debug \
-		--require ./index.js:$(PROJECT) \
-		--outfile $@
+	$(NODE_BIN)/esbuild \
+		--bundle \
+		--define:DEBUG="true" \
+		--define:global=globalThis \
+		--external:fs \
+		--external:path \
+		--global-name=$(PROJECT) \
+		--outfile=$@ \
+		index.js
 
 .DELETE_ON_ERROR: build/build.js
 

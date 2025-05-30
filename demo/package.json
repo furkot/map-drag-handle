@@ -4,6 +4,6 @@
     "maps-facade": "^2.2.2"
   },
   "devDependencies": {
-    "browserify": "~16"
+    "esbuild": "^0.25.5"
   }
 }

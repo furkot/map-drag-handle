@@ -51,7 +51,7 @@
     {
       "include": ["demo/**/*.js"],
       "javascript": {
-        "globals": ["mapboxgl"]
+        "globals": ["maplibregl"]
       }
     }
   ]

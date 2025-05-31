@@ -1,9 +1,10 @@
 const mapsFacade = require('maps-facade');
 const googlePolyline = require('@pirxpilot/google-polyline');
 
+const mapStyle = require('./map-style.json');
 const mapDragHandle = require('..');
 
-mapboxgl.accessToken = 'pk.eyJ1IjoibWVsaXRlbGUiLCJhIjoiY2oxZ3BlcmZtMDAzNzJxb2hicndlOTU0eSJ9.6WFMFozvFpKUJA6bhLeiSA';
+globalThis.mapboxgl = maplibregl;
 
 main();
 
@@ -23,7 +24,7 @@ function bounds(points) {
   );
 }
 
-function main() {
+async function main() {
   const maps = mapsFacade.init();
   const dataEl = document.querySelector('#data');
   const points = JSON.parse(dataEl.getAttribute('data-markers'));
@@ -56,15 +57,16 @@ function main() {
     dragstart: dragstart
   });
 
-  const map = maps.map(document.querySelector('.demo .map'), {
-    style: 'mapbox://styles/mapbox/streets-v9',
+  const map = await maps.map(document.querySelector('.demo .map'), {
+    mapboxgl: maplibregl,
+    style: createUrl(mapStyle),
     zoomControl: true,
     zoomControlOptions: { position: 'RB' },
     onReady: function () {
       const poly = maps.polyline({
-        map: map,
+        map,
         color: '#a21bab',
-        path: path,
+        path,
         draggable: true
       });
       handle.attach(poly, {
@@ -120,5 +122,9 @@ function main() {
       });
     }
   });
-  map.fitBounds(bnds);
+  map.panToBounds(bnds);
+}
+
+function createUrl(obj) {
+  return `data:text/plain;base64,${btoa(JSON.stringify(obj))}`;
 }

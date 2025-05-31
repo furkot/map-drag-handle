@@ -19,8 +19,7 @@ build/build.js: node_modules $(SRC) | build
 		--bundle \
 		--define:DEBUG="true" \
 		--define:global=globalThis \
-		--external:fs \
-		--external:path \
+		--sourcemap \
 		--global-name=$(PROJECT) \
 		--outfile=$@ \
 		index.js

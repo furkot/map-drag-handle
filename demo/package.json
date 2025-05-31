@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "@pirxpilot/google-polyline": "^3.0.0",
-    "maps-facade": "^2.2.2"
+    "maps-facade": "~3"
   },
   "devDependencies": {
     "esbuild": "^0.25.5"
